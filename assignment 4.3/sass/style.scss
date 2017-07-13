@@ -1,0 +1,217 @@
+@import '_variables';
+//------------------------Import Variables ---------------//
+@mixin border-rad($rad...) {
+    border-radius: ($rad);
+}
+
+@mixin box-sizing ($value) {
+    -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+    -o-box-sizing: $value;
+    -ms-box-sizing: $value;
+    box-sizing: $value;
+}
+
+//---------------- Mixins -------------------------//
+* {
+    @include box-sizing(border-box);
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+body {
+    padding-top: 108px;
+    font-family: monospace;
+    background: url("http://i.imgur.com/Rm2NpV2.jpg") no-repeat;
+    margin: 0;
+    background-size: cover;
+    overflow-y: scroll;
+    p {
+        font-size: 17px;
+    }
+    &>header {
+        margin-bottom: 40px;
+        padding: 0 8px 0 8px;
+        text-align: center;
+        text-transform: uppercase;
+        position: fixed;
+        width: 100%;
+        background: $white;
+        top: 0;
+        z-index: 3;
+        .container {
+            position: relative;
+        }
+        h1 {
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            color: $secondary-color;
+            a {
+                text-decoration: none;
+                color: $primary-color;
+                text-transform: uppercase;
+                vertical-align: sub;
+            }
+        }
+    }
+}
+
+
+/*   Main Navigation styles  */
+
+nav {
+    list-style: none;
+    display: inline-block;
+    h2 {
+        display: none;
+    }
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+        float: left;
+        position: relative;
+        a {
+            text-decoration: none;
+            h4 {
+                padding-right: 20px;
+                font-weight: 400;
+                text-transform: uppercase;
+                color: $primary-color;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+
+/* Dropdown Navigation styles */
+
+a {
+    .arrow {
+        width: 0;
+        height: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px solid $primary-color;
+        display: inline-block;
+        vertical-align: middle;
+        margin-bottom: 2px;
+        position: relative;
+        right: 8px;
+    }
+    ul {
+        position: absolute;
+        display: none;
+        width: 135px;
+        top: 48px;
+        li {
+            float: none;
+            background-color: $white;
+            padding: 10px;
+            color: $primary-color;
+            font-size: 13px;
+            border-bottom: 1px solid #eaf8ff;
+            &:hover {
+                background-color: $secondary-color;
+                color: white;
+            }
+            &:last-child {
+                border: none;
+            }
+        }
+    }
+}
+
+li:hover ul {
+    display: block;
+    border: 1px solid $secondary-color;
+}
+
+#social {
+    display: inline-block;
+    padding-right: 0;
+    margin-right: 4px;
+}
+
+
+/* Main section Styles */
+
+main {
+    @extend footer;
+    section {
+        h3 {
+            display: none;
+        }
+    }
+    article {
+        padding: 0 0 80px 0;
+        position: relative;
+        z-index: 2;
+        p {
+            padding: 0 8px 0 8px;
+        }
+    }
+}
+
+
+/* figure section styles */
+
+figure {
+    div {
+        display: table;
+        margin: 0 auto;
+        div {
+            overflow: hidden;
+            width: 450px;
+            height: 339px;
+            float: left;
+            margin: 20px 30px;
+            border: 8px solid $white;
+            box-shadow: 0 0 15px $black;
+            @include border-rad(50% 0);
+            transition: width 1s, height 1s, border-radius 1s, transform 1s;
+            transform: rotate(10deg);
+            &:hover {
+                @include border-rad(0);
+                width: 500px;
+                height: 400px;
+                transform: rotate(0);
+            }
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+        }
+    }
+    figcaption {
+        clear: both;
+        text-align: center;
+        font-size: 2em;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+}
+
+
+/* About us section styles */
+
+#aboutUs {
+    margin: 90px 0;
+}
+
+
+/* footer styles */
+
+footer {
+    color: $white;
+}
